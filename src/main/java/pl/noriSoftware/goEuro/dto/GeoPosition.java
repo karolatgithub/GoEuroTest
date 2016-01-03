@@ -1,13 +1,17 @@
 package pl.noriSoftware.goEuro.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class GeoPosition {
-	private double latitude;
-	private double longitude;
+	@JsonProperty("latitude")
+	private Double latitude;
+	@JsonProperty("longitude")
+	private Double longitude;
 
 	/**
 	 * @return the latitude
 	 */
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
@@ -15,14 +19,14 @@ public class GeoPosition {
 	 * @param latitude
 	 *            the latitude to set
 	 */
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
 	/**
 	 * @return the longitude
 	 */
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
@@ -30,7 +34,7 @@ public class GeoPosition {
 	 * @param longitude
 	 *            the longitude to set
 	 */
-	public void setLongitude(double longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 

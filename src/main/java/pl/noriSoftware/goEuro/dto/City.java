@@ -1,17 +1,27 @@
 package pl.noriSoftware.goEuro.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class City {
-	private int __id = -1;
+	@JsonProperty("_id")
+	private Integer id;
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("type")
 	private String type;
+	@JsonProperty("geo_position")
 	private GeoPosition geoPosition;
+	@JsonProperty("iata_airport_code")
+	private String iataAirportCode;
+	@JsonProperty("locationId")
+	private Integer locationId = -1;
 
 	/**
-	 * @param __id
-	 *            the __id to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void set__id(int __id) {
-		this.__id = __id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**
@@ -39,10 +49,10 @@ public class City {
 	}
 
 	/**
-	 * @return the __id
+	 * @return the id
 	 */
-	public int get__id() {
-		return __id;
+	public Integer getId() {
+		return id;
 	}
 
 	/**
@@ -74,14 +84,15 @@ public class City {
 	@Override
 	public String toString() {
 		return "id="
-				+ __id
+				+ id
 				+ " name="
 				+ name
 				+ " type="
 				+ type
-				+ " geoPos{"
+				+ " geo_pos{"
 				+ (String) ((geoPosition == null) ? "null" : geoPosition
-						.toString()) + "}";
+						.toString()) + "}" + " iataAirportCode="
+				+ iataAirportCode + " locationId=" + locationId;
 	}
 
 	/**
@@ -90,12 +101,42 @@ public class City {
 	 */
 	public String[] toStrings() {
 		return new String[] {
-				String.valueOf(__id),
+				(id == null) ? null : String.valueOf(id),
 				name,
 				type,
-				(geoPosition == null) ? "" : String.valueOf(geoPosition
+				(geoPosition == null) ? null : String.valueOf(geoPosition
 						.getLatitude()),
-				(geoPosition == null) ? "" : String.valueOf(geoPosition
+				(geoPosition == null) ? null : String.valueOf(geoPosition
 						.getLongitude()) };
+	}
+
+	/**
+	 * @return the iataAirportCode
+	 */
+	public String getIataAirportCode() {
+		return iataAirportCode;
+	}
+
+	/**
+	 * @param iataAirportCode
+	 *            the iataAirportCode to set
+	 */
+	public void setIataAirportCode(String iataAirportCode) {
+		this.iataAirportCode = iataAirportCode;
+	}
+
+	/**
+	 * @return the locationId
+	 */
+	public Integer getLocationId() {
+		return locationId;
+	}
+
+	/**
+	 * @param locationId
+	 *            the locationId to set
+	 */
+	public void setLocationId(Integer locationId) {
+		this.locationId = locationId;
 	}
 }

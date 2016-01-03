@@ -9,4 +9,4 @@ mvn -U clean package
 #run
 cd target
 java -jar GoEuroTest.jar Warszawa
-more  Warszawa.csv
+more Warszawa.csv

@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -24,9 +26,8 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
  *
  */
 public class City2CSV implements ICity2CSV {
-
-	private final RestTemplate restTemplate = new RestTemplate(
-			getMessageConverters());
+	final protected Logger logger = LoggerFactory.getLogger(getClass());
+	private final RestTemplate restTemplate = new RestTemplate();
 
 	private String url;
 
@@ -37,6 +38,11 @@ public class City2CSV implements ICity2CSV {
 	public void run(final String cityName) throws IOException {
 		final City[] cities = restTemplate.getForObject(url + cityName,
 				City[].class);
+		if (logger.isDebugEnabled()) {
+			for (City city : cities) {
+				logger.debug("city:{}", city.toString());
+			}
+		}
 		final File file = new File(cityName + ".csv");
 		final CSVWriter writer = new CSVWriter(new FileWriter(file));
 		for (City city : cities) {
@@ -45,6 +51,7 @@ public class City2CSV implements ICity2CSV {
 		writer.close();
 	}
 
+	@SuppressWarnings("unused")
 	private List<HttpMessageConverter<?>> getMessageConverters() {
 		final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		converter
