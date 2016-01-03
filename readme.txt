@@ -3,11 +3,10 @@ https://spring.io/blog/2014/12/02/latest-jackson-integration-improvements-in-spr
 http://docs.spring.io/autorepo/docs/spring-android/1.0.x/reference/html/rest-template.html
 http://stackoverflow.com/questions/23674046/get-list-of-json-objects-with-spring-resttemplate
 
-#build
+#build and test by maven 3.x with java 1.7
 mvn -U clean package
 
-#test
-mvn -U clean test
-
 #run
-java -jar target\GoEuroTest.jar Warszawa
+cd target
+java -jar GoEuroTest.jar Warszawa
+more  Warszawa.csv
